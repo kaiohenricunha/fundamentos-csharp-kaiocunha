@@ -1,0 +1,8 @@
+C:\Users\CunhaKai\development\solutions\projects\csharp\MusicaTutoriais\01-MusicaTutoriais\bin\Debug\01-MusicaTutoriais.exe.config
+C:\Users\CunhaKai\development\solutions\projects\csharp\MusicaTutoriais\01-MusicaTutoriais\bin\Debug\01-MusicaTutoriais.exe
+C:\Users\CunhaKai\development\solutions\projects\csharp\MusicaTutoriais\01-MusicaTutoriais\bin\Debug\01-MusicaTutoriais.pdb
+C:\Users\CunhaKai\development\solutions\projects\csharp\MusicaTutoriais\01-MusicaTutoriais\obj\Debug\01-MusicaTutoriais.csproj.AssemblyReference.cache
+C:\Users\CunhaKai\development\solutions\projects\csharp\MusicaTutoriais\01-MusicaTutoriais\obj\Debug\01-MusicaTutoriais.csproj.SuggestedBindingRedirects.cache
+C:\Users\CunhaKai\development\solutions\projects\csharp\MusicaTutoriais\01-MusicaTutoriais\obj\Debug\01-MusicaTutoriais.csproj.CoreCompileInputs.cache
+C:\Users\CunhaKai\development\solutions\projects\csharp\MusicaTutoriais\01-MusicaTutoriais\obj\Debug\01-MusicaTutoriais.exe
+C:\Users\CunhaKai\development\solutions\projects\csharp\MusicaTutoriais\01-MusicaTutoriais\obj\Debug\01-MusicaTutoriais.pdb
