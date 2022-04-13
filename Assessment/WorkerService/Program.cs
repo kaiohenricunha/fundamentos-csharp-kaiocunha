@@ -1,5 +1,9 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
 using Domain;
 using Infra;
+using Microsoft.Extensions.Configuration;
 
 namespace WorkerService
 {
@@ -11,10 +15,11 @@ namespace WorkerService
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args).ConfigureServices((hostContext, services) =>
-            {
-                services.AddSingleton<ITutorialRepository, TutorialRepositoryList>();
-                services.AddHostedService<Worker>();
-            });
+            Host.CreateDefaultBuilder(args)
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddSingleton<ITutorialRepository, TutorialRepositoryFile>();
+                    services.AddHostedService<Worker>();
+                });
     }
 }

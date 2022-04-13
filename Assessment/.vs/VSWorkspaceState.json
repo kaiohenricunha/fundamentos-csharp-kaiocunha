@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Domain",
+    "\\Infra",
+    "\\WorkerService"
   ],
   "SelectedNode": "\\Assessment.sln",
   "PreviewInSolutionExplorer": false

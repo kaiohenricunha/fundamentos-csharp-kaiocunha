@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 using Domain;
+using System.Globalization;
 
 namespace Infra
 {
@@ -17,11 +18,38 @@ namespace Infra
             _direc = Directory.GetCurrentDirectory();
             CreateFiles();
             ReadFiles();
+
+        }
+
+        public static void SaveToTextFile(string content, string fileName)
+        {
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            using (var stream = new FileStream(
+                Path.Combine(docPath, fileName), FileMode.Append, FileAccess.Write, FileShare.Write, 4096))
+            {
+                var bytes = Encoding.UTF8.GetBytes(content);
+                stream.Write(bytes, 0, bytes.Length);
+            }
+        }
+
+        public static List<string> ReadTextFromFile(String fileName)
+        {
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            if (File.Exists(Path.Combine(docPath, fileName)))
+            {
+                List<string> lines = File.ReadAllLines(Path.Combine(docPath, fileName)).ToList();
+                return lines;
+            }
+            else
+            {
+                return new List<string>();
+            }
         }
 
 
         public void ReadFiles()
         {
+            //CultureInfo invC = CultureInfo.InvariantCulture;
             var tutorials = new List<Tutorial>();
 
             var path = $@"{_direc}\{_fil}";
@@ -47,7 +75,8 @@ namespace Infra
                                         aux[2],
                                         maxDate,
                                         int.Parse(aux[4])
-                                    // public Tutorial(int id, string title, string instructor, DateTime maxDate, int totalHours)
+                                    // int, string, string, date, int
+                                    // (int id, string title, string instructor, DateTime maxDate, int totalHours)
                                     )
                                     );
                             }
@@ -82,6 +111,7 @@ namespace Infra
             if (File.Exists(fileRoute))
             {
                 File.WriteAllLines(fileRoute, way, Encoding.UTF8);
+                //ReadTextFromFile("TutorialRegister.txt");
                 ReadFiles();
             }
         }

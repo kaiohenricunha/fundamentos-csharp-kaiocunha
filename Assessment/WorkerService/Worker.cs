@@ -16,7 +16,7 @@ namespace WorkerService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture("pt-BR");
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 
             string option;
 
@@ -267,7 +267,7 @@ namespace WorkerService
         {
             Console.Clear();
             ShowFiveRegister();
-            Console.Title = "AT - Kaio H. cUNHA";
+            Console.Title = "AT - Kaio H. Cunha";
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("======================================");
             Console.WriteLine("--- Music Tutorials Manager ---");

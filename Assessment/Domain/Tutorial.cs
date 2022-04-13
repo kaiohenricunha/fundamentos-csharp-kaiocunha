@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using System.Globalization;
+
+namespace Domain
 {
     public class Tutorial
     {
@@ -19,14 +21,8 @@
             Instructor = instructor ?? throw new ArgumentException("Course instructor wasn't informed");
             MaxDate = maxDate;
             TotalHours = totalHours;
-            RegisterDate = RegistrationDate();
+            RegisterDate = DateTime.Now.Date;
             IsFree(maxDate);
-        }
-
-        public DateTime RegistrationDate()
-        {
-            DateTime registerDate = DateTime.Now;
-            return registerDate;
         }
 
         public string GetResumeData() => string.Format("Id: {0} Title: {1} Instructor: {2}", Id, Title, Instructor);
@@ -38,20 +34,14 @@
 
         public void IsFree(DateTime maxDate)
         {
-            string format = "dd/MM/yyyy";
 
-            DateTime date = DateTime.Today;
-            string date_string = date.ToString("dd/MM/yyyy");
-            DateTime date_updated = DateTime.ParseExact(date_string, format, null);
+            DateTime date = DateTime.Now.Date;
 
-            string freePeriodString = maxDate.ToString("dd/MM/yyyy");
-            DateTime freeDate = DateTime.ParseExact(freePeriodString, format, null);
-
-            int compare = DateTime.Compare(date_updated, freeDate);
+            int compare = DateTime.Compare(date, maxDate);
 
             if (compare < 0)
             {
-                var diff_days = maxDate - date_updated;
+                var diff_days = maxDate - date;
                 Free = true;
                 Console.WriteLine("Price: R$ {0}", Price);
                 Console.WriteLine("Free subscription for {0} ends in {1} days.", Title, diff_days.Days);
@@ -84,18 +74,18 @@
                    $"[Free until]:{MaxDate: dd//MM/yyyy} " +
                    $"[Free]:{Free} " +
                    $"[Price]:{Price} " +
-                   $"[Total Hours]:{TotalHours}";
+                   $"[Total Hours]:{TotalHours}" +
+                   $"[Registration Date]:{RegisterDate}";
         }
 
         public string ToCsv()
         {
-           return $"{Id};" +
-                  $"{Title};" +
-                  $"{Instructor};" +
-                  $"{MaxDate:dd/MM/yyyy};" +
-                  $"{Free};" +
-                  $"{Price};" +
-                  $"{TotalHours};";
+            return $"{Id};" +
+                   $"{Title};" +
+                   $"{Instructor};" +
+                   $"{MaxDate:dd/MM/yyyy};" +
+                   $"{TotalHours};";
+            // (int id, string title, string instructor, DateTime maxDate, int totalHours)
         }
     }
 }
